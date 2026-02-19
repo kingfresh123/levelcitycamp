@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level city camp portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+    }
+    header {
+      background: #1e40af;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .login-box {
+      max-width: 380px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .logo {
+      width: 90px;
+      margin-bottom: 10px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      background: #1e40af;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #1e3a8a;
+    }
+    nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    nav button {
+      width: auto;
+      padding: 8px 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background: #e5e7eb;
+    }
+    .hidden {
+      display: none;
+    }
+    .card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header id="header" class="hidden">
+  <h2>level city Members Dashboard</h2>
+</header>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-box">
+  <img src="level city .JPG" alt="Logo" class="logo" />
+  <h2>Level city members portal</h2>
+  <p>Please login to continue</p>
+  <input type="text" id="username" placeholder="Username" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+  <p id="loginError" style="color:red;"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="container hidden">
+
+  <nav>
+    <button onclick="showSection('members')">Members</button>
+    <button onclick="showSection('payments')">Payments</button>
+    <button onclick="showSection('events')">Upcoming Events</button>
+    <button onclick="logout()">Logout</button>
+  </nav>
+
+  <!-- MEMBERS -->
+  <div id="members" class="section">
+    <h3>Member Information</h3>
+    <table>
+      <tr><th>Name</th><th>Role</th><th>Phone</th></tr>
+      <tr><td>KING FRESH (Razak)</td><td>ACCOUNTANT</td><td>0597735482</td></tr>
+      <tr><td>Bashit (Fancy)</td><td>MC</td><td>0555295145</td></tr>
+      <tr><td>⁠AUTHENTIC (Majeed)</td><td>Member</td><td>0531216618</td></tr>
+      <tr><td>⁠MINGOS MURDER (Amiinu)</td><td>Member</td><td>+971524938450</td></tr>
+      <tr><td>⁠AR FASHION  (Rahaman)</td><td>ASSISTANT ACCOUNTANT</td><td>0553212057</td></tr>
+      <tr><td>⁠HUMBLE (fada Yakuu)</td><td>Member</td><td>0554420879</td></tr>
+      <tr><td>⁠BIG STOFF (Mustopha)</td><td>Member</td><td>0532857740</td></tr>
+      <tr><td>⁠RAMZY DON (Subur)</td><td>Member</td><td>0542404881</td></tr>
+      <tr><td>⁠BELIEVER (Yussif)</td><td>SECRETARY</td><td>0533887845</td></tr>
+      <tr><td>⁠GAZA (Karim Bile)</td><td>Member</td><td>0538961995</td></tr>
+      <tr><td>NASTY BOY (Hamza)</td><td>Member</td><td>0257659783</td></tr>
+      <tr><td>⁠Wa-Naa Wafa (Rafiq)</td><td>Member</td><td>0553275260</td></tr>
+      <tr><td>⁠City Boy (Siisu)</td><td>Member</td><td>0595875430</td></tr>
+      <tr><td>⁠GADAM FANCY (Fataw) </td><td>Member</td><td>00594622709</td></tr>
+      <tr><td>THE BIGGEST (Razak)</td><td>ARTISTS</td><td>0554035335</td></tr>
+      <tr><td>⁠WIZKING (Baaki)</td><td>ARTISTS</td><td>0557763674</td></tr>
+      <tr><td>⁠KOMBA (Nuri)</td><td>PRESIDENT</td><td>0592682658</td></tr>
+      <tr><td>⁠ZIGI (Aziz)</td><td>ASSISTANT PRESIDENT</td><td>0593156972</td></tr>
+      <tr><td>AJAT (Siisu)</td><td>Member</td><td>00597888672</td></tr>
+      <tr><td>⁠PANZA (Hak)</td><td>Member</td><td>0247003458</td></tr>
+      <tr><td>⁠MC (MUNIRU)</td><td>Member</td><td>0544876102</td></tr>
+      <tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>Member</td><td>0555009341</td></tr>
+      <tr><td>⁠DON JAGABAN (MUKADI)</td><td>Member</td><td>0556282624</td></tr>
+      <tr><td>KIIRIKU (Amadu)</td><td>Member</td><td>0531341464</td></tr>
+      <tr><td>⁠BRAIN BOSS (Wahidu)</td><td>Member</td><td>0598749978</td></tr>
+      <tr><td>⁠Baaron (Oli jay)</td><td>Member</td><td>0550653669</td></tr>
+      <tr><td>⁠DON ONE (RAUF)</td><td>Member</td><td>0537413949</td></tr>
+      <tr><td>⁠BIG KAPO (Kaapuori)</td><td>Member</td><td>0502206814</td></tr>
+      <tr><td>⁠KUNYELIBEOW (Amiyaw)</td><td>Member</td><td>0538147999</td></tr>
+      <tr><td>⁠NBA GBEGNI (Sadat)</td><td>Member</td><td>00533619704</td></tr>
+      <tr><td>⁠BIG MASS (Masa)</td><td>Member</td><td>0553189025</td></tr>
+      <tr><td>⁠NO TIME BWOY (Halilu)</td><td>Member</td><td>0534882286</td></tr>
+      <tr><td>⁠WISE BEE (Jalaadeen)</td><td>Member</td><td>0536918402</td></tr>
+      <tr><td>⁠SANKANA VANDAM (Karim)</td><td>Member</td><td>0533853706</td></tr>
+     
+
+    </table>
+  </div>
+
+  <!-- PAYMENTS -->
+  <div id="payments" class="section hidden">
+    <h3>1st peace walk Payment GHS150 List</h3>
+    <table>
+      <tr><th>Member</th><th>Amount</th><th>Date</th><th>Status</th></tr>
+      <tr><td>Fancy</td><td>GHS 150</td><td>2025-01-10</td><td>Paid</td></tr>
+      <tr><td>King Fresh</td><td>GHS 150</td><td>2025-01-15</td><td>Paid</td></tr>
+       
+<tr⁠><td>ALL EYES (Nasiri)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr⁠><td>⁠AUTHENTIC (Majeed)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠MINGOS MURDER (Amiinu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠AR FASHION  (Rahaman)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠HUMBLE (fada Yakuu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG STOFF (MUSTAPHA)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr><td>⁠RAMZY DON (Subur)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠BELIEVER (Yussif)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠GAZA (Karim Bile)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠NASTY BOY (Hamza)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>Wa-Naa Wafa (Rafiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠FANCY (Bashit) </td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr><td>⁠City Boy (Siisu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠GADAM FANCY (Fataw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠THE BIGGEST (Razak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠WIZKING (Baaki)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠KOMBA (Nuri)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠ZIGI (Aziz)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></td>
+<tr><td>⁠AJAT (Siisu)⁠PANZA (Hak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>MC (MUNIRU) </td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠DON JAGABAN (MUKADI)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠KIIRIKU (Amadu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BRAIN BOSS (Wahidu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠Baaron (Oli jay)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠DON ONE  (RAUF)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG KAPO (Kaapuori)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td⁠>KUNYELIBEOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠NBA GBEGNI (Sadat)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG MASS (Masa)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠NO TIME BWOY (Halilu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠WISE BEE (Jalaadeen)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td>
+<tr><td>⁠SANKANA VANDAM (Karim)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+
+    </table>
+  </div>
+  <hr>
+  <!-- PAYMENTS -->
+  <div id="payments" class="section hidden">
+<h3>FANCY WIFE BIRTH CEREMONY PAYMENTS LIST</h3>
+<hr>
+    <table>
+      <tr><th>Member</th><th>Amount</th><th>Date</th><th>Status</th></tr>
+      <tr><td>Fancy</td><td>GHS 150</td><td>2025-01-10</td><td>Paid</td></tr>
+      <tr><td>King Fresh</td><td>GHS 150</td><td>2025-01-15</td><td>Paid</td></tr>
+       
+<tr⁠><td>ALL EYES (Nasiri)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr⁠><td>⁠AUTHENTIC (Majeed)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠MINGOS MURDER (Amiinu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠AR FASHION  (Rahaman)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠HUMBLE (fada Yakuu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG STOFF (MUSTAPHA)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr><td>⁠RAMZY DON (Subur)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠BELIEVER (Yussif)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠GAZA (Karim Bile)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠NASTY BOY (Hamza)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>Wa-Naa Wafa (Rafiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠FANCY (Bashit) </td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
+<tr><td>⁠City Boy (Siisu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠GADAM FANCY (Fataw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠THE BIGGEST (Razak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠WIZKING (Baaki)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠KOMBA (Nuri)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠ZIGI (Aziz)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></td>
+<tr><td>⁠AJAT (Siisu)⁠PANZA (Hak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>MC (MUNIRU) </td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠DON JAGABAN (MUKADI)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠KIIRIKU (Amadu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BRAIN BOSS (Wahidu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠Baaron (Oli jay)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠DON ONE  (RAUF)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG KAPO (Kaapuori)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td⁠>KUNYELIBEOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠NBA GBEGNI (Sadat)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠BIG MASS (Masa)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
+<tr><td>⁠NO TIME BWOY (Halilu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠WISE BEE (Jalaadeen)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td>
+<tr><td>⁠SANKANA VANDAM (Karim)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+
+    </table>
+  </div>
+  <!-- EVENTS -->
+  <div id="events" class="section hidden">
+    <h3>Upcoming Events</h3>
+    <div class="card">
+      <h4>Trip to jirapa dubia</h4>
+      <p>Date: 3 days after sallah, 2026</p>
+      <p>Location: jirapa</p>
+    </div>
+    <div class="card">
+      <h4>peace walk</h4>
+      <p>Date: comming soon</p>
+      <p>Location: Boli</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    // demo login credentials
+    if (user === 'level city' && pass === 'level city123') {
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+      document.getElementById('header').classList.remove('hidden');
+    } else {
+      document.getElementById('loginError').innerText = 'Invalid login details';
+    }
+  }
+
+  function logout() {
+    location.reload();
+  }
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
