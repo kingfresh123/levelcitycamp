@@ -22,7 +22,7 @@
     .login-box {
       max-width: 380px;
       margin: 80px auto;
-      background: #fff;
+      background: #ffffff;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -80,6 +80,35 @@
       border-radius: 6px;
       margin-bottom: 15px;
     }
+    .event img{
+    width:450px;
+    height: 450px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-right:20px;
+    
+}
+
+.event-content{
+    flex:1;
+}
+
+.event h2{
+    color:#1e3d59;
+}
+
+@media(max-width:768px){
+    .event{
+        flex-direction:column;
+        text-align:center;
+    }
+    .event img{
+        margin:0 0 15px 0;
+        width:100%;
+        height:auto;
+    }
+}
+
   </style>
 </head>
 <body>
@@ -95,6 +124,8 @@
   <p>Please login to continue</p>
   <input type="text" id="username" placeholder="Username" />
   <input type="password" id="password" placeholder="Password" />
+  <label>
+        <input type="checkbox" onclick="togglePassword()"> Show Password
   <button onclick="login()">Login</button>
   <p id="loginError" style="color:red;"></p>
 </div>
@@ -106,6 +137,7 @@
     <button onclick="showSection('members')">Members</button>
     <button onclick="showSection('payments')">Payments</button>
     <button onclick="showSection('events')">Upcoming Events</button>
+    <button onclick="showSection('history')">History</button>
     <button onclick="logout()">Logout</button>
   </nav>
 
@@ -142,12 +174,12 @@
       <tr><td>⁠Baaron (Oli jay)</td><td>Member</td><td>0550653669</td></tr>
       <tr><td>⁠DON ONE (RAUF)</td><td>Member</td><td>0537413949</td></tr>
       <tr><td>⁠BIG KAPO (Kaapuori)</td><td>Member</td><td>0502206814</td></tr>
-      <tr><td>⁠KUNYELIBEOW (Amiyaw)</td><td>Member</td><td>0538147999</td></tr>
       <tr><td>⁠NBA GBEGNI (Sadat)</td><td>Member</td><td>00533619704</td></tr>
       <tr><td>⁠BIG MASS (Masa)</td><td>Member</td><td>0553189025</td></tr>
       <tr><td>⁠NO TIME BWOY (Halilu)</td><td>Member</td><td>0534882286</td></tr>
       <tr><td>⁠WISE BEE (Jalaadeen)</td><td>Member</td><td>0536918402</td></tr>
       <tr><td>⁠SANKANA VANDAM (Karim)</td><td>Member</td><td>0533853706</td></tr>
+      <tr><td>⁠KUNYELIBOW (Amiyaw)</td><td>Member</td><td>0533853706</td></tr>
      
 
     </table>
@@ -188,12 +220,12 @@
 <tr><td>⁠Baaron (Oli jay)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 <tr><td>⁠DON ONE  (RAUF)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 <tr><td>⁠BIG KAPO (Kaapuori)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td⁠>KUNYELIBEOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 <tr><td>⁠NBA GBEGNI (Sadat)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 <tr><td>⁠BIG MASS (Masa)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
 <tr><td>⁠NO TIME BWOY (Halilu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 <tr><td>⁠WISE BEE (Jalaadeen)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td>
 <tr><td>⁠SANKANA VANDAM (Karim)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
+<tr><td>⁠KUNYELIBOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
 
     </table>
   </div>
@@ -259,6 +291,24 @@
   </div>
 
 </div>
+<!-- Header -->
+<div id="history" class="section hidden">
+    <h1>Our History</h1>
+    <p>Learn about our journey and major events over the years</p>
+
+
+<div class="event">
+       <center></center>
+  <img src="PEACE WALK (1).png" alt="Founding Event">
+  </center>
+        <div class="event-content">
+            <h2>2018 - Organization Founded</h2>
+            <p>
+                Our organization was officially founded in 2018 with a vision to unite members 
+                and build a strong community. The first meeting was held with 25 members.
+            </p>
+        </div>
+    </div>
 
 <script>
   function login() {
@@ -287,6 +337,3 @@
 
 </body>
 </html>
-
-
-
