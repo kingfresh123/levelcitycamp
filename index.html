@@ -1,374 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Level city camp portal</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f9;
-    }
-    header {
-      background: #1e40af;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-    }
-    .container {
-      padding: 20px;
-    }
-    .login-box {
-      max-width: 380px;
-      margin: 80px auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .logo {
-      width: 90px;
-      margin-bottom: 10px;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-    }
-    button {
-      background: #1e40af;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    button:hover {
-      background: #1e3a8a;
-    }
-    nav {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    nav button {
-      width: auto;
-      padding: 8px 14px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      margin-bottom: 20px;
-    }
-    th, td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-    th {
-      background: #0155ff;
-    }
-    .hidden {
-      display: none;
-    }
-    .card {
-      background: #01d313;
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-    }
-    .event img{
-    width:450px;
-    height: 450px;
-    object-fit:cover;
-    border-radius:8px;
-    margin-right:20px;
-    
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level City Camp Portal</title>
 
-.event-content{
-    flex:1;
-}
-
-.event h2{
-    color:#1e3d59;
-}
-
-@media(max-width:768px){
-    .event{
-        flex-direction:column;
-        text-align:center;
-    }
-    .event img{
-        margin:0 0 15px 0;
-        width:100%;
-        height:auto;
-    }
-}
-
-  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #050505, #111, #2b1d00);
+            color: #fff;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        /* LOGIN */
+        
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(20, 20, 20, .95);
+            border: 2px solid #d4af37;
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, .35);
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            margin-bottom: 20px;
+        }
+        
+        .login-box h1 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .login-box p {
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+        
+        .input-group {
+            margin-bottom: 18px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            background: #111;
+            border: 1px solid #444;
+            color: #fff;
+            font-size: 15px;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, .5);
+        }
+        
+        .show-password {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #ddd;
+            font-size: 14px;
+        }
+        
+        .show-password input {
+            width: auto;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: .3s;
+            background: linear-gradient(90deg, #d4af37, #ffd700, #a87800);
+            color: #111;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 18px rgba(255, 215, 0, .6);
+        }
+        
+        #error {
+            margin-top: 15px;
+            color: #ff6b6b;
+        }
+        /* DASHBOARD */
+        
+        #dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 270px;
+            background: linear-gradient(180deg, #0a0a0a, #1a1a1a, #2d1e00);
+            border-right: 2px solid #d4af37;
+            padding: 25px 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+        
+        .sidebar .brand {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .dashboard-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            padding: 4px;
+            background: #111;
+            box-shadow: 0 0 18px rgba(255, 215, 0, .5);
+            margin-bottom: 15px;
+        }
+        
+        .sidebar .brand h2 {
+            color: #ffd700;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .sidebar .brand p {
+            color: #bbb;
+            font-size: 13px;
+        }
+        
+        .menu-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            background: #171717;
+            border: 1px solid #5e4a13;
+            color: #ffd700;
+            text-align: left;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: .3s;
+        }
+        
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: linear-gradient(90deg, #d4af37, #8f6b00);
+            color: #111;
+            transform: translateX(5px);
+        }
+        
+        .main {
+            margin-left: 270px;
+            width: 100%;
+            padding: 30px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .header h1 {
+            color: #ffd700;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(20, 20, 20, .9);
+            border: 1px solid #d4af37;
+            border-radius: 22px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
+        }
+        
+        .stat-card h3 {
+            color: #bbb;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card h2 {
+            color: #ffd700;
+            font-size: 38px;
+        }
+        
+        .section {
+            background: rgba(15, 15, 15, .92);
+            border: 1px solid rgba(212, 175, 55, .4);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 18px;
+        }
+        
+        th {
+            background: linear-gradient(90deg, #d4af37, #9f7700);
+            color: #111;
+            padding: 14px;
+            text-align: left;
+        }
+        
+        td {
+            background: #121212;
+            color: #eee;
+            padding: 13px;
+            border-bottom: 1px solid #222;
+        }
+        
+        tr:hover td {
+            background: #1b1b1b;
+        }
+        
+        .event-card {
+            background: linear-gradient(145deg, #1b1b1b, #302000);
+            border: 1px solid #d4af37;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .event-image {
+            width: 65%;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 2px solid #d4af37;
+            margin-bottom: 18px;
+        }
+        
+        .event-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .event-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .history-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 18px;
+            border: 2px solid #d4af37;
+            margin: 20px 0;
+        }
+        
+        footer {
+            text-align: center;
+            color: #aaa;
+            margin-top: 25px;
+        }
+        
+        @media(max-width:900px) {
+            #dashboard {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                border-right: none;
+                border-bottom: 2px solid #d4af37;
+            }
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header id="header" class="hidden">
-  <h2>level city Members Dashboard</h2>
-</header>
+    <div id="loginPage" class="login-page">
+        <div class="login-box">
+            <img src="level city.JPG" alt="Level City Logo" class="logo">
+            <h1>LEVEL CITY</h1>
+            <p>Members Camp Portal</p>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage" class="login-box">
-  <img src="level city .JPG" alt="Logo" class="logo" />
-  <h2>Level city members portal</h2>
-  <p>Please login to continue</p>
-  <input type="text" id="username" placeholder="Username" />
-  <input type="password" id="password" placeholder="Password" />
-  <label>
-        <input type="checkbox" onclick="togglePassword()"> Show Password
-  <button onclick="login()">Login</button>
-  <p id="loginError" style="color:red;"></p>
-</div>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="container hidden">
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
 
-  <nav>
-    <button onclick="showSection('members')">Members</button>
-    <button onclick="showSection('payments')">Payments</button>
-    <button onclick="showSection('events')">Upcoming Events</button>
-    <button onclick="showSection('history')">History</button>
-    <button onclick="logout()">Logout</button>
-  </nav>
+            <label class="show-password">
+            <input type="checkbox" onclick="togglePassword()">
+            Show Password
+        </label>
 
-  <!-- MEMBERS -->
-  <div id="members" class="section">
-    <h3>Member Information</h3>
-    <table>
-      <tr><th>Name</th><th>Role</th><th>Phone</th></tr>
-      <tr><td>KING FRESH (Razak)</td><td>ACCOUNTANT</td><td>0597735482</td></tr>
-      <tr><td>Bashit (Fancy)</td><td>MC</td><td>0555295145</td></tr>
-      <tr><td>⁠AUTHENTIC (Majeed)</td><td>Member</td><td>0531216618</td></tr>
-      <tr><td>⁠MINGOS MURDER (Amiinu)</td><td>Member</td><td>+971524938450</td></tr>
-      <tr><td>⁠AR FASHION  (Rahaman)</td><td>ASSISTANT ACCOUNTANT</td><td>0553212057</td></tr>
-      <tr><td>⁠HUMBLE (fada Yakuu)</td><td>Member</td><td>0554420879</td></tr>
-      <tr><td>⁠BIG STOFF (Mustopha)</td><td>Member</td><td>0532857740</td></tr>
-      <tr><td>⁠RAMZY DON (Subur)</td><td>Member</td><td>0542404881</td></tr>
-      <tr><td>⁠BELIEVER (Yussif)</td><td>SECRETARY</td><td>0533887845</td></tr>
-      <tr><td>⁠GAZA (Karim Bile)</td><td>Member</td><td>0538961995</td></tr>
-      <tr><td>NASTY BOY (Hamza)</td><td>Member</td><td>0257659783</td></tr>
-      <tr><td>⁠Wa-Naa Wafa (Rafiq)</td><td>Member</td><td>0553275260</td></tr>
-      <tr><td>⁠City Boy (Siisu)</td><td>Member</td><td>0595875430</td></tr>
-      <tr><td>⁠GADAM FANCY (Fataw) </td><td>Member</td><td>00594622709</td></tr>
-      <tr><td>THE BIGGEST (Razak)</td><td>ARTISTS</td><td>0554035335</td></tr>
-      <tr><td>⁠WIZKING (Baaki)</td><td>ARTISTS</td><td>0557763674</td></tr>
-      <tr><td>⁠KOMBA (Nuri)</td><td>PRESIDENT</td><td>0592682658</td></tr>
-      <tr><td>⁠ZIGI (Aziz)</td><td>ASSISTANT PRESIDENT</td><td>0593156972</td></tr>
-      <tr><td>AJAT (Siisu)</td><td>Member</td><td>00597888672</td></tr>
-      <tr><td>⁠PANZA (Hak)</td><td>Member</td><td>0247003458</td></tr>
-      <tr><td>⁠MC (MUNIRU)</td><td>Member</td><td>0544876102</td></tr>
-      <tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>Member</td><td>0555009341</td></tr>
-      <tr><td>⁠DON JAGABAN (MUKADI)</td><td>Member</td><td>0556282624</td></tr>
-      <tr><td>KIIRIKU (Amadu)</td><td>Member</td><td>0531341464</td></tr>
-      <tr><td>⁠BRAIN BOSS (Wahidu)</td><td>Member</td><td>0598749978</td></tr>
-      <tr><td>⁠Baaron (Oli jay)</td><td>Member</td><td>0550653669</td></tr>
-      <tr><td>⁠DON ONE (RAUF)</td><td>Member</td><td>0537413949</td></tr>
-      <tr><td>⁠BIG KAPO (Kaapuori)</td><td>Member</td><td>0502206814</td></tr>
-      <tr><td>⁠NBA GBEGNI (Sadat)</td><td>Member</td><td>00533619704</td></tr>
-      <tr><td>⁠BIG MASS (Masa)</td><td>Member</td><td>0553189025</td></tr>
-      <tr><td>⁠NO TIME BWOY (Halilu)</td><td>Member</td><td>0534882286</td></tr>
-      <tr><td>⁠WISE BEE (Jalaadeen)</td><td>Member</td><td>0536918402</td></tr>
-      <tr><td>⁠SANKANA VANDAM (Karim)</td><td>Member</td><td>0533853706</td></tr>
-      <tr><td>⁠KUNYELIBOW (Amiyaw)</td><td>Member</td><td>0533853706</td></tr>
-      <tr><td>IBRAHIM FUSEINI ADAMS (XPRESSGHONLINE.COM</td><td>Member</td><td>0208291107</td></tr>
-     
-
-    </table>
-  </div>
-
-  <!-- PAYMENTS -->
-  <div id="payments" class="section hidden">
-    <h3>1st peace walk Payment GHS150 List</h3>
-    <table>
-      <tr><th>Member</th><th>Amount</th><th>Date</th><th>Status</th></tr>
-      <tr><td>Fancy</td><td>GHS 150</td><td>2025-01-10</td><td>Paid</td></tr>
-      <tr><td>King Fresh</td><td>GHS 150</td><td>2025-01-15</td><td>Paid</td></tr>
-       
-<tr⁠><td>ALL EYES (Nasiri)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr⁠><td>⁠AUTHENTIC (Majeed)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠MINGOS MURDER (Amiinu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠AR FASHION  (Rahaman)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠HUMBLE (fada Yakuu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG STOFF (MUSTAPHA)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr><td>⁠RAMZY DON (Subur)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠BELIEVER (Yussif)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠GAZA (Karim Bile)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠NASTY BOY (Hamza)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>Wa-Naa Wafa (Rafiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠FANCY (Bashit) </td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr><td>⁠City Boy (Siisu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠GADAM FANCY (Fataw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠THE BIGGEST (Razak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠WIZKING (Baaki)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠KOMBA (Nuri)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠ZIGI (Aziz)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></td>
-<tr><td>⁠AJAT (Siisu)⁠PANZA (Hak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>MC (MUNIRU) </td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠DON JAGABAN (MUKADI)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠KIIRIKU (Amadu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BRAIN BOSS (Wahidu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠Baaron (Oli jay)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠DON ONE  (RAUF)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG KAPO (Kaapuori)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠NBA GBEGNI (Sadat)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG MASS (Masa)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠NO TIME BWOY (Halilu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠WISE BEE (Jalaadeen)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td>
-<tr><td>⁠SANKANA VANDAM (Karim)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠KUNYELIBOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-
-    </table>
-  </div>
-  <hr>
-  <!-- PAYMENTS -->
-  <div id="payments" class="section hidden">
-<h3>FANCY WIFE BIRTH CEREMONY PAYMENTS LIST</h3>
-<hr>
-    <table>
-      <tr><th>Member</th><th>Amount</th><th>Date</th><th>Status</th></tr>
-      <tr><td>Fancy</td><td>GHS 150</td><td>2025-01-10</td><td>Paid</td></tr>
-      <tr><td>King Fresh</td><td>GHS 150</td><td>2025-01-15</td><td>Paid</td></tr>
-       
-<tr⁠><td>ALL EYES (Nasiri)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr⁠><td>⁠AUTHENTIC (Majeed)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠MINGOS MURDER (Amiinu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠AR FASHION  (Rahaman)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠HUMBLE (fada Yakuu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG STOFF (MUSTAPHA)</td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr><td>⁠RAMZY DON (Subur)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠BELIEVER (Yussif)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠GAZA (Karim Bile)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠NASTY BOY (Hamza)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>Wa-Naa Wafa (Rafiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠FANCY (Bashit) </td><td>GHS150</td><td>2025-01-15</td><td>paid</td></tr>
-<tr><td>⁠City Boy (Siisu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠GADAM FANCY (Fataw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠THE BIGGEST (Razak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠WIZKING (Baaki)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠KOMBA (Nuri)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠ZIGI (Aziz)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></td>
-<tr><td>⁠AJAT (Siisu)⁠PANZA (Hak)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>MC (MUNIRU) </td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠YOUNG SPRIT (Tawfiq)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠DON JAGABAN (MUKADI)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠KIIRIKU (Amadu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BRAIN BOSS (Wahidu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠Baaron (Oli jay)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠DON ONE  (RAUF)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG KAPO (Kaapuori)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td⁠>KUNYELIBEOW (Amiyaw)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠NBA GBEGNI (Sadat)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠BIG MASS (Masa)</td><td>GHS150</td><td>2025-01-10</td><td>Paid</td></tr>
-<tr><td>⁠NO TIME BWOY (Halilu)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-<tr><td>⁠WISE BEE (Jalaadeen)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td>
-<tr><td>⁠SANKANA VANDAM (Karim)</td><td>GHS150</td><td>2025-01-10</td><td>paid</td></tr>
-
-    </table>
-  </div>
-  <!-- EVENTS -->
-  <div id="events" class="section hidden">
-    <h3>Upcoming Events</h3>
-    <div class="card">
-      <h4>Trip to jirapa dubia</h4>
-      <p>Date: 3 days after sallah, 2026</p>
-      <p>Location: jirapa</p>
-    </div>
-    <div class="card">
-      <h4>peace walk</h4>
-      <p>Date: comming soon</p>
-      <p>Location: Boli</p>
-    </div>
-  </div>
-
-</div>
-<!-- Header -->
-<div id="history" class="section hidden">
-    <h1>Our History</h1>
-    <h4>Level City Camp Leads First Ever Peace Walk And Cleanup In Boli Community</h4>
-    <p>Peace Walk History – Boli Level City Camp (08 June 2025)
-
-On 8th June 2025, the peaceful community of Boli in the Upper West Region 
-witnessed a remarkable event as the Level City Camp organized a powerful 
-Peace Walk aimed at promoting unity, love, and development.
-
-The event brought together youth, community leaders, and residents from
- Boli and surrounding communities. Dressed in branded shirts and holding 
- placards with messages of peace and togetherness, participants marched 
- through the principal streets of Boli to spread awareness about peaceful 
- coexistence and community growth.
-
-”</p>
-
-
-<div class="event">
-       <center></center>
-  <img src="PEACE WALK (1).png" alt="Founding Event">
-  </center>
-        <div class="event-content">
-            
-            
-            <p>The Peace Walk was strongly supported by key individuals who played vital 
-roles in its success. Among them was DJ 10Plus, who energized the crowd with
- inspiring music and sound coordination throughout the procession. Also present
-  was Toppie Junior, whose encouragement and presence motivated the youth to actively participate.
-
-A special appreciation goes to Boora, widely known in the community as “The Ever
- Supportive,” for his commitment and logistical support toward the event’s organization.
-
-The Peace Walk also received notable backing from the CEO of Xpress GH Online, 
-a multiple award-winning blogger and strong advocate for growth and development 
-in the Upper West Region. His involvement highlighted the importance of media 
-support in promoting positive community initiatives and youth empowerment.
-
-The event concluded with a short gathering where speakers emphasized the need 
-for unity, respect, and collective responsibility in building a peaceful and
- progressive Upper West Region. The Peace Walk stands as a historic moment
-  for Boli Level City Camp, reinforcing the message that peace is the 
-  foundation for development.
-
-Theme: “Unity in Peace, Strength in Development.</p>
+            <button class="btn" onclick="login()">Login</button>
+            <p id="error"></p>
         </div>
-      
     </div>
-<footer>
-    © 2026 Level city Camp Member Portal | All Rights Reserved
-</footer>
-<script>
-  function login() {
-    const user = document.getElementById('username').value;
-    const pass = document.getElementById('password').value;
 
-    // demo login credentials
-    if (user === 'level city' && pass === 'level city123') {
-      document.getElementById('loginPage').classList.add('hidden');
-      document.getElementById('dashboard').classList.remove('hidden');
-      document.getElementById('header').classList.remove('hidden');
-    } else {
-      document.getElementById('loginError').innerText = 'Invalid login details';
-    }
-  }
+    <div id="dashboard" class="hidden">
+        <div class="sidebar">
+            <div class="brand">
+                <img src="level city.jpg" alt="Level City Logo" class="dashboard-logo">
+                <h2>LEVEL CITY</h2>
+                <p>Camp Member Dashboard</p>
+            </div>
 
-  function logout() {
-    location.reload();
-  }
+            <button class="menu-btn active" onclick="showSection('overview',this)">Dashboard</button>
+            <button class="menu-btn" onclick="showSection('members',this)">Members</button>
+            <button class="menu-btn" onclick="showSection('payments',this)">Payments</button>
+            <button class="menu-btn" onclick="showSection('events',this)">Upcoming Events</button>
+            <button class="menu-btn" onclick="showSection('history',this)">History</button>
+            <button class="menu-btn" onclick="logout()">Logout</button>
+        </div>
 
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
-    document.getElementById(id).classList.remove('hidden');
-  }
-</script>
+        <div class="main">
+            <div class="header">
+                <h1>Welcome To Level City Camp Portal</h1>
+            </div>
+
+            <div id="overview" class="section">
+                <h2>Dashboard Overview</h2>
+                <div class="stats">
+                    <div class="card stat-card">
+                        <h3>Total Members</h3>
+                        <h2>35</h2>
+                    </div>
+
+                    <div class="card stat-card">
+                        <h3>Total Revenue</h3>
+                        <h2>GHS 4,950</h2>
+                    </div>
+
+                    <div class="card stat-card">
+                        <h3>Paid Members</h3>
+                        <h2>33</h2>
+                    </div>
+
+                    <div class="card stat-card">
+                        <h3>Upcoming Events</h3>
+                        <h2>2</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="members" class="section hidden">
+                <h2>Members List</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Phone</th>
+                    </tr>
+                    <tr>
+                        <td>KING FRESH (Razak)</td>
+                        <td>Accountant</td>
+                        <td>0597735482</td>
+                    </tr>
+                    <tr>
+                        <td>Bashit (Fancy)</td>
+                        <td>MC</td>
+                        <td>0555295145</td>
+                    </tr>
+                    <tr>
+                        <td>AUTHENTIC (Majeed)</td>
+                        <td>Member</td>
+                        <td>0531216618</td>
+                    </tr>
+                    <tr>
+                        <td>MINGOS MURDER (Amiinu)</td>
+                        <td>Member</td>
+                        <td>+971524938450</td>
+                    </tr>
+                    <tr>
+                        <td>AR FASHION (Rahaman)</td>
+                        <td>Assistant Accountant</td>
+                        <td>0553212057</td>
+                    </tr>
+                    <tr>
+                        <td>BELIEVER (Yussif)</td>
+                        <td>Secretary</td>
+                        <td>0533887845</td>
+                    </tr>
+                    <tr>
+                        <td>KOMBA (Nuri)</td>
+                        <td>President</td>
+                        <td>0592682658</td>
+                    </tr>
+                    <tr>
+                        <td>ZIGI (Aziz)</td>
+                        <td>Assistant President</td>
+                        <td>0593156972</td>
+                    </tr>
+                    <tr>
+                        <td>THE BIGGEST (Razak)</td>
+                        <td>Artist</td>
+                        <td>0554035335</td>
+                    </tr>
+                    <tr>
+                        <td>WIZKING (Baaki)</td>
+                        <td>Artist</td>
+                        <td>0557763674</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="payments" class="section hidden">
+                <h2>Peace Walk Payment List</h2>
+                <table>
+                    <tr>
+                        <th>Member</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Fancy</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>King Fresh</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-15</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>AUTHENTIC</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>MINGOS MURDER</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>AR FASHION</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>KOMBA</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>ZIGI</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                </table>
+
+                <br><br>
+
+                <h2>Fancy Wife Birth Ceremony Payments</h2>
+                <table>
+                    <tr>
+                        <th>Member</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Fancy</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>King Fresh</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-15</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>BELIEVER</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>KOMBA</td>
+                        <td>GHS 150</td>
+                        <td>2025-01-10</td>
+                        <td>Paid</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="events" class="section hidden">
+                <h2>Upcoming Events</h2>
+
+                <div class="event-card">
+                    <img src="LEVEL CITY TRIP TO DUBAI FLYER.png" alt="Trip To Jirapa Dubia" class="event-image">
+                    <h3>Trip To Jirapa Dubia</h3>
+                    <p><strong>Date:</strong> 3 Days After Sallah, 2026</p>
+                    <p><strong>Location:</strong> Jirapa</p>
+                    <p><strong>Description:</strong> Members of Level City Camp will travel together to Jirapa Dubia for a special outing, networking, and celebration.</p>
+                </div>
+
+                <div class="event-card">
+                    <img src="PEACE WALK (1).png" alt="Peace Walk Event" class="event-image">
+                    <h3>Peace Walk</h3>
+                    <p><strong>Date:</strong> Coming Soon</p>
+                    <p><strong>Location:</strong> Boli</p>
+                    <p><strong>Description:</strong> A community peace walk to promote unity, development, and togetherness among the youth and people of Boli.</p>
+                </div>
+            </div>
+
+            <div id="history" class="section hidden">
+                <h2>Level City Camp History</h2>
+                <p>
+                    On 8 June 2025, Level City Camp organized its first Peace Walk and cleanup exercise in Boli. The event promoted unity, love, and development in the community. Youth, leaders, and residents marched through the streets carrying peace messages.
+                </p>
+
+                <img src="PEACE WALK (1).png" alt="Peace Walk" class="history-image">
+
+                <p>
+                    The event was supported by DJ 10Plus, Toppie Junior, Boora, and the CEO of XPRESS GH ONLINE. The program ended with speeches encouraging unity and development in the Upper West Region.
+                </p>
+            </div>
+
+            <footer>
+                © 2026 Level City Camp Member Portal | All Rights Reserved
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+
+            if (username === 'level city' && password === 'level city123') {
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('error').innerText = 'Invalid Username or Password';
+            }
+        }
+
+        function togglePassword() {
+            const password = document.getElementById('password');
+            password.type = password.type === 'password' ? 'text' : 'password';
+        }
+
+        function showSection(id, button) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            document.getElementById(id).classList.remove('hidden');
+
+            document.querySelectorAll('.menu-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if (button) {
+                button.classList.add('active');
+            }
+        }
+
+        function logout() {
+            location.reload();
+        }
+    </script>
 
 </body>
-</html>
 
+</html>
